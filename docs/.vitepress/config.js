@@ -1,29 +1,19 @@
 export default {
-  title: "Kelompok 1",
+  title: "Makalah Kelompok 5",
   description: "Etika Iptek",
 
   themeConfig: {
+    footer: {
+      copyright: "Copyright © 2024 Kelompok5",
+    },
+
     sidebar: [
       {
-        text: "Tugas 9",
+        text: "File Makalah",
         collapsible: true,
-        items: [{ text: "nama", link: "/tugas9/nama.md" }],
-      },
-      {
-        text: "Tugas 10",
-        collapsible: false,
-        items: [{ text: "nama", link: "/getting-started" }],
-      },
-      {
-        text: "Tugas 11",
-        collapsible: true,
-        items: [{ text: "nama", link: "/getting-started" }],
-      },
-      {
-        text: "Tugas 12",
-        collapsible: true,
-        items: [{ text: "nama", link: "/getting-started" }],
+        items: [{ text: "Download", link: "#" }],
       },
     ],
   },
+  aside: false,
 }
