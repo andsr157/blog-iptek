@@ -199,7 +199,7 @@ GET /api/surveys/{id}
         "id": "2",
         "type": "multiple_choice",
         "label": "How satisfied are you with our service?",
-        "desc": ""
+        "desc": "",
         "options": [
           { "id": "1", "label": "Very Satisfied" },
           { "id": "2", "label": "Satisfied" },
@@ -243,11 +243,15 @@ POST /api/surveys
 **Request Response Example:** 
 ```json
 {
-  "id": "1",
-  "title": "Customer Satisfaction Survey",
-  "desc": "Help us improve our service",
-  "status": 0,
-  "questions": []
+  "code":"0",
+  "msg":"success",
+  "data":{
+    "id": "1",
+    "title": "Customer Satisfaction Survey",
+    "desc": "Help us improve our service",
+    "status": 0,
+    "questions": []
+  }
 }
 ```
  
@@ -281,7 +285,7 @@ PUT /api/surveys
     {
         "type": "multiple_choice",
         "label": "How satisfied are you with our service?",
-        "desc": ""
+        "desc": "",
         "options": [
           { "id": "1", "label": "Very Satisfied" },
           { "id": "2", "label": "Satisfied" },
@@ -298,7 +302,7 @@ PUT /api/surveys
     {
         "type": "yes_no",
         "label": "Are you satisfied with our service?",
-        "desc": ""
+        "desc": "",
         "options": [],
         "settings": {
           "required": true,
@@ -307,7 +311,7 @@ PUT /api/surveys
   ],
   "updatedQuestions": [
     {
-      "id": "1"
+      "id": "1",
       "text": "What is your age?",
       "type": "short_text",
       "settings": {
@@ -330,7 +334,7 @@ PUT /api/surveys
   "status": 1,
   "questions": [
       {
-        "id": 1
+        "id": 1,
         "text": "What is your age?",
         "type": "short_text",
         "settings": {
@@ -341,7 +345,7 @@ PUT /api/surveys
           "id": 2,
           "type": "multiple_choice",
           "label": "How satisfied are you with our service?",
-          "desc": ""
+          "desc": "",
           "options": [
             { "id": "1", "label": "Very Satisfied" },
             { "id": "2", "label": "Satisfied" },
@@ -356,10 +360,10 @@ PUT /api/surveys
           }
       },
       {
-          "id": 2
+          "id": 2,
           "type": "yes_no",
           "label": "Are you satisfied with our service?",
-          "desc": ""
+          "desc": "",
           "options": [],
           "settings": {
             "required": true,
@@ -387,7 +391,7 @@ DELETE /api/surveys/{survey_id}/questions/{question_id}
 **Response Example:**
 ```json
 {
-  "code": "0"
+  "code": "0",
   "msg": "Question deleted successfully",
 }
 ```
@@ -473,14 +477,14 @@ POST /api/surveys/{id}/submit
 
 
 
----
+<!-- ---
 
 ### **Optional: GET Show Survey Answer (H5)**
 **Endpoint:**
 ```
 GET /api/surveys/{id}/answers
 ```
-**Response:** *(Same as GET All Responses)*
+**Response:** *(Same as GET All Responses)* -->
 
 ## **Interface Definitions**
 
@@ -503,6 +507,7 @@ interface Question {
   text: string;
   type: 'short_text' | 'long_text' | 'multiple_choice' | 'yes_no' | 'dropdown' | 'file_upload';
   options?: QuestionOption[];
+  settings?:[]
 }
 ```
 
@@ -521,7 +526,7 @@ interface SurveyResponse {
   surveyId: string;
   user: string;
   answers: Answer[];
-  submittedAt: string;
+  created_at: string;
 }
 ```
 
@@ -532,8 +537,3 @@ interface Answer {
   response: string | string[];
 }
 ```
-
-### **Setting Inteface**
-
-### **Setting Inteface**
-
