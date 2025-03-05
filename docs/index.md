@@ -22,7 +22,7 @@ GET /api/surveys
 | data.status     | number  | Survey status (0 or 1)      |
 | data.questions  | array | List of survey questions |
 
-#### **Question Object**
+**Question Object**
 | Field       | Type   | Description                            |
 |-------------|--------|----------------------------------------|
 | id          | string | Question ID                            |
@@ -228,10 +228,10 @@ GET /api/surveys/{id}
 POST /api/surveys
 ```
 **Payload:**
-| Field       | Type    | Description                    |
-|-------------|---------|--------------------------------|
-| title       | string  | survey title                   |
-| desc        | string  | survey description             |
+| Field       | Type    | Description            |
+|-------------|---------|------------------------|
+| title       | string  | survey title           |
+| desc        | string  | survey description     |
 
 
 **Request Payload Example:** 
@@ -279,7 +279,7 @@ PUT /api/surveys
 **Request Payload Example:**
 ```json
 {
-  "surveyId": "1"
+  "surveyId": "1",
   "title": "New Survey",
   "desc": "Survey Description",
   "status": 1,
