@@ -2,6 +2,8 @@
 
 ## **Survey API**
 
+[View ERD Diagram](https://drive.google.com/file/d/1eLUdc5WBJ5WGq-nJCDCSfphmNCSCDlVY/view?usp=sharing)
+
 ## **1. GET All Surveys**
 **Endpoint:**
 ```
@@ -477,7 +479,7 @@ POST /api/surveys/{id}/submit
 
 
 
-<!-- ---
+<!-- --- 
 
 ### **Optional: GET Show Survey Answer (H5)**
 **Endpoint:**
