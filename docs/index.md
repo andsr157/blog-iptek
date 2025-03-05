@@ -1,81 +1,134 @@
-<style>
-  .content img {
-    width: 100%;
-    height: auto;
-  }
-  .justify-text {
-    text-align: justify;
-  }
-</style>
+# API Documentation
 
-# Memerangi Konten Ilegal: Tanggung Jawab Bersama untuk Masa Depan Digital yang Aman
+## **Survey API**
 
-![Gambar Ilustrasi](/gambar.jpg)
+### **1. GET All Surveys**
+**Endpoint:**
+```
+GET /api/surveys
+```
+**Response:**
 
-<div class="justify-text">
+| Field    | Type     | Description                 |
+|----------|---------|-----------------------------|
+| msg      | string  | Response message            |
+| code     | string  | Response code               |
+| data     | object  | Survey data                 |
+| data.id  | string  | Survey ID                   |
+| data.title | string | Survey title                |
+| data.desc | string | Survey description          |
+| data.status | number | Survey status (0 or 1)     |
+| data.options | array | Additional options         |
+| data.questions | array | List of questions         |
+| data.questions[].id | string | Question ID        |
+| data.questions[].type | string | Question type    |
+| data.questions[].label | string | Question label  |
 
-## Pendahuluan
+---
 
-Konten ilegal di internet merupakan masalah serius yang berdampak luas pada masyarakat. Dari pornografi anak hingga ujaran kebencian, konten ilegal tidak hanya melanggar hukum tetapi juga merusak tatanan sosial dan moral. Dalam artikel ini, kita akan membahas jenis-jenis konten ilegal, dampaknya, dan peran serta tanggung jawab berbagai pihak dalam memerangi penyebarannya.
+### **2. GET Single Survey by ID**
+**Endpoint:**
+```
+GET /api/surveys/{id}
+```
+**Response:** *(Same as GET All Surveys but only for a single survey)*
 
-## Pengertian Konten Ilegal
+---
 
-Konten ilegal adalah data atau informasi yang dimasukkan ke internet yang melanggar hukum, tidak etis, atau mengganggu ketertiban umum. Penyebaran konten ini dapat merugikan individu dan masyarakat, serta menimbulkan dampak negatif yang berkepanjangan.
+### **3. POST Create Survey**
+**Endpoint:**
+```
+POST /api/surveys
+```
+**Request Payload:**
 
-## Jenis-Jenis Konten Ilegal dan Dampaknya
+| Field   | Type   | Description            |
+|---------|-------|------------------------|
+| title   | string | Survey title           |
+| desc    | string | Survey description     |
+| status  | number | Survey status (0 or 1) |
+| options | array  | Additional options     |
+| questions | array | List of questions     |
 
-### Pornografi Anak
+**Response:**
 
-**Dampak:** Trauma psikologis mendalam bagi korban, peningkatan risiko eksploitasi seksual anak, dan gangguan kesehatan mental.
+| Field   | Type   | Description         |
+|---------|-------|---------------------|
+| msg     | string | Response message   |
+| code    | string | Response code      |
+| data    | object | Created survey data |
 
-### Pelanggaran Hak Cipta
+---
 
-**Dampak:** Kerugian ekonomi bagi industri kreatif, penurunan insentif untuk berkarya, dan ancaman terhadap mata pencaharian pekerja di sektor kreatif.
+### **4. PUT Update Survey**
+**Endpoint:**
+```
+PUT /api/surveys/{id}
+```
+**Request Payload:** *(Same as POST Create Survey)*
 
-### Ujaran Kebencian
+**Response:** *(Same as POST Create Survey)*
 
-**Dampak:** Perpecahan sosial, diskriminasi, dan peningkatan kekerasan berbasis kebencian.
+---
 
-### Hoaks
+### **5. POST Submit Survey**
+**Endpoint:**
+```
+POST /api/surveys/{id}/submit
+```
+**Request Payload:**
 
-**Dampak:** Kepanikan massal, keputusan yang salah diambil oleh masyarakat, dan penurunan kepercayaan terhadap media dan otoritas resmi.
+| Field    | Type   | Description                     |
+|----------|-------|---------------------------------|
+| answers  | array | List of submitted answers      |
+| answers[].question_id | string | Question ID      |
+| answers[].response | string | User response     |
 
-## Peran Teknologi dan Internet dalam Penyebaran Konten Ilegal
+**Response:**
 
-Perkembangan teknologi dan peningkatan penggunaan internet memfasilitasi penyebaran konten ilegal. Anonimitas, enkripsi, dan jaringan seperti dark web memungkinkan distribusi konten ilegal secara luas. Peningkatan penggunaan smartphone dan media sosial juga mempercepat penyebaran konten ilegal.
+| Field   | Type   | Description         |
+|---------|-------|---------------------|
+| msg     | string | Response message   |
+| code    | string | Response code      |
 
-## Tanggung Jawab Bersama dalam Memerangi Konten Ilegal
+---
 
-### Pemerintah
+### **6. DELETE Question**
+**Endpoint:**
+```
+DELETE /api/surveys/{survey_id}/questions/{question_id}
+```
+**Response:**
 
-- Membuat dan menegakkan regulasi yang efektif.
-- Membentuk badan pengawas dan satuan tugas khusus.
-- Bekerjasama dengan negara lain untuk menangani kasus lintas batas.
+| Field   | Type   | Description         |
+|---------|-------|---------------------|
+| msg     | string | Response message   |
+| code    | string | Response code      |
 
-### Penyedia Layanan Internet (ISP)
+---
 
-- Memantau dan memblokir akses ke konten ilegal.
-- Bekerjasama dengan pemerintah dan penegak hukum.
+### **7. GET All Responses**
+**Endpoint:**
+```
+GET /api/surveys/{id}/responses
+```
+**Response:**
 
-### Platform Online
+| Field    | Type   | Description                      |
+|----------|-------|----------------------------------|
+| msg      | string | Response message                |
+| code     | string | Response code                   |
+| data     | array  | List of responses               |
+| data[].id | string | Response ID                     |
+| data[].user | string | User who submitted the response |
+| data[].answers | array | List of answers              |
 
-- Menerapkan kebijakan tegas terkait konten ilegal.
-- Menggunakan teknologi seperti AI untuk mendeteksi dan menghapus konten ilegal.
-- Menindak pengguna yang melanggar aturan.
+---
 
-### Masyarakat
+### **Optional: GET Show Survey Answer (H5)**
+**Endpoint:**
+```
+GET /api/surveys/{id}/answers
+```
+**Response:** *(Same as GET All Responses)*
 
-- Tidak menyebarkan konten ilegal dan melaporkannya kepada pihak berwenang.
-- Meningkatkan edukasi dan kesadaran tentang bahaya konten ilegal.
-
-## Meningkatkan Kesadaran dan Edukasi
-
-Peningkatan kesadaran dan edukasi masyarakat tentang bahaya konten ilegal sangat penting. Program edukasi yang komprehensif dan partisipasi aktif masyarakat dalam melaporkan konten ilegal dapat membantu mengatasi masalah ini. Teknologi seperti kecerdasan buatan dan pembelajaran mesin juga dapat digunakan untuk mendeteksi dan mencegah penyebaran konten ilegal.
-
-## Kesimpulan
-
-Memerangi konten ilegal adalah tanggung jawab bersama yang memerlukan kerjasama dari pemerintah, penyedia layanan internet, platform online, dan masyarakat. Dengan langkah-langkah yang tepat, kita dapat menciptakan lingkungan digital yang aman dan etis, serta melindungi hak-hak individu dan kesejahteraan masyarakat.
-
-Dengan demikian, penting bagi kita semua untuk mengambil bagian dalam upaya ini. Melalui kerjasama yang kuat dan pemanfaatan teknologi yang bijak, kita dapat menciptakan dunia digital yang lebih baik bagi semua orang. Mari kita jaga internet agar tetap menjadi tempat yang aman dan bermanfaat bagi generasi sekarang dan mendatang.
-
-</div>
