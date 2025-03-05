@@ -429,13 +429,13 @@ GET /api/surveys/{id}/responses
     {
       "id": "resp-123",
       "user": "user-456",
+      "created_at":"2023-12-01T12:00:00Z",
       "answers": [
         {
           "questionId": "q-1",
           "response": "Very Satisfied"
         }
       ],
-      "submittedAt": "2023-12-01T12:00:00Z"
     }
   ]
 }
