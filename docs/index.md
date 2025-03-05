@@ -11,25 +11,25 @@ GET /api/surveys
 ```
 **Response:**
 
-| Field    | Type     | Description                   |
-|----------|---------|--------------------------------|
-| msg      | string  | Response message               |
-| code     | string  | Response code                  |
-| data     | object  | Survey data                    ||
-| data.id  | string  | Survey ID                      |
-| data.title   | string | Survey title                |
-| data.desc    | string | Survey description          |
-| data.status  | number | Survey status (0 or 1)      |
-| data.questions   | array | List of survey questions |
+| Field           | Type    | Description                 |
+|-----------------|---------|-----------------------------|
+| msg             | string  | Response message            |
+| code            | string  | Response code               |
+| data            | object  | Survey data                 |
+| data.id         | string  | Survey ID                   |
+| data.title      | string  | Survey title                |
+| data.desc       | string  | Survey description          |
+| data.status     | number  | Survey status (0 or 1)      |
+| data.questions  | array | List of survey questions |
 
 #### **Question Object**
-| Field      | Type   | Description |
-|------------|--------|-------------|
-| id        | string | Question ID |
-| type      | string | Question type (`short_text`, `long_text`, `multiple_choice`, `dropdown`, `yes_no`, `file_upload`) |
-| label     | string | Question text |
-| desc     | string | Question additional description |
-| settings  | object | Configuration based on question `type` |
+| Field       | Type   | Description                            |
+|-------------|--------|----------------------------------------|
+| id          | string | Question ID                            |
+| type        | string | Question type (`short_text`, `long_text`, `multiple_choice`, `dropdown`, `yes_no`, `file_upload`)|
+| label       | string | Question text                          |
+| desc        | string | Question additional description        |
+| settings    | object | Configuration based on question `type` |
 
 ### **Settings Per Type**
 Berikut adalah kemungkinan `settings` berdasarkan `type`:
@@ -164,16 +164,16 @@ GET /api/surveys/{id}
 ```
 **Response:**
 
-| Field    | Type     | Description                   |
-|----------|---------|--------------------------------|
-| msg      | string  | Response message               |
-| code     | string  | Response code                  |
-| data     | object  | Survey data                    |
-| data.id  | string  | Survey ID                      |
-| data.title   | string | Survey title                |
-| data.desc    | string | Survey description          |
-| data.status  | number | Survey status (0 or 1)      |
-| data.questions   | array | List of survey questions |
+| Field           | Type    | Description                    |
+|-----------------|---------|--------------------------------|
+| msg             | string  | Response message               |
+| code            | string  | Response code                  |
+| data            | object  | Survey data                    |
+| data.id         | string  | Survey ID                      |
+| data.title      | string  | Survey title                   |
+| data.desc       | string  | Survey description             |
+| data.status     | number  | Survey status (0 or 1)         |
+| data.questions  | array   | List of survey questions       |
 
 
 **Response Example:**
@@ -228,10 +228,10 @@ GET /api/surveys/{id}
 POST /api/surveys
 ```
 **Payload:**
-| Field    | Type     | Description                   |
-|----------|---------|--------------------------------|
-| title      | string  | survey title               |
-| desc     | string  | survey description                |
+| Field       | Type    | Description                    |
+|-------------|---------|--------------------------------|
+| title       | string  | survey title                   |
+| desc        | string  | survey description             |
 
 
 **Request Payload Example:** 
@@ -266,14 +266,14 @@ PUT /api/surveys
 ```
 **Request Payload:**
 
-| Field   | Type   | Description            |
-|---------|-------|------------------------|
-| surveyId   | string | Survey id           |
-| title   | string | Survey title           |
-| desc    | string | Survey description     |
-| status  | number | Survey status (0 or 1) |
-| addedQuestions | array | List of new questions   |
-| updatedQuestions | array | List of updated questions   |
+| Field           | Type   | Description                |
+|-----------------|--------|----------------------------|
+| surveyId        | string | Survey id                  |
+| title           | string | Survey title               |
+| desc            | string | Survey description         |
+| status          | number | Survey status (0 or 1)     |
+| addedQuestions  | array  | List of new questions      |
+| updatedQuestions| array  | List of updated questions  |
 
 
 **Request Payload Example:**
@@ -385,8 +385,8 @@ DELETE /api/surveys/{survey_id}/questions/{question_id}
 ```
 **Response:**
 
-| Field   | Type   | Description         |
-|---------|-------|---------------------|
+| Field   | Type   | Description        |
+|---------|--------|--------------------|
 | msg     | string | Response message   |
 | code    | string | Response code      |
 
@@ -407,23 +407,23 @@ GET /api/surveys/{id}/responses
 ```
 **Response:**
 
-| Field    | Type   | Description                     |
-|----------|-------|----------------------------------|
-| msg      | string | Response message                |
-| code     | string | Response code                   |
-| data     | Responses[]  | List of responses          |
+| Field    | Type        | Description           |
+|----------|------- -----|-----------------------|
+| msg      | string      | Response message      |
+| code     | string      | Response code         |
+| data     | Responses[] | List of responses     |
 
 
 **Data Responses Object**
-| Field      | Type   | Description |
-|------------|--------|-------------|
-| id         | string | response id |
-| surveyId   | string | survey id   |
-| user       | string | question id |
-| created_at | string | created time |
-| answers    | array  | asnwers list |
-| answers[].questionId | string | question id |
-| answers[].response | string | answer |
+| Field                 | Type   | Description    |
+|-----------------------|--------|----------------|
+| id                    | string | response id    |
+| surveyId              | string | survey id      |
+| user                  | string | question id    |
+| created_at            | string | created time   |
+| answers               | array  | asnwers list   |
+| answers[].questionId  | string | question id    |
+| answers[].response    | string | answer         |
 
 
 **Response Example:**
@@ -465,9 +465,9 @@ POST /api/surveys/{id}/submit
 **Response:**
 
 | Field   | Type   | Description         |
-|---------|-------|---------------------|
-| msg     | string | Response message   |
-| code    | string | Response code      |
+|---------|--------|---------------------|
+| msg     | string | Response message    |
+| code    | string | Response code       |
 
 **Response Example:**
 ```json
@@ -476,8 +476,6 @@ POST /api/surveys/{id}/submit
   "msg": "Survey submitted successfully"
 }
 ```
-
-
 
 <!-- --- 
 
