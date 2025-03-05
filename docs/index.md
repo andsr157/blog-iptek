@@ -228,17 +228,17 @@ GET /api/surveys/{id}
 POST /api/surveys
 ```
 **Payload:**
-| Field       | Type    | Description            |
-|-------------|---------|------------------------|
-| title       | string  | survey title           |
-| desc        | string  | survey description     |
+| Field       | Type    | Description                   |
+|-------------|---------|-------------------------------|
+| title       | string  | survey title                  |
+| desc        | string  | survey description (optional) |
 
 
 **Request Payload Example:** 
 ```json
 {
   "title": "New Survey",
-  "desc": "Survey Description",
+  "desc": "Survey Description" (optional),
 }
 ```
 
@@ -266,14 +266,14 @@ PUT /api/surveys
 ```
 **Request Payload:**
 
-| Field           | Type   | Description                |
-|-----------------|--------|----------------------------|
-| surveyId        | string | Survey id                  |
-| title           | string | Survey title               |
-| desc            | string | Survey description         |
-| status          | number | Survey status (0 or 1)     |
-| addedQuestions  | array  | List of new questions      |
-| updatedQuestions| array  | List of updated questions  |
+| Field           | Type   | Description                          |
+|-----------------|--------|--------------------------------------|
+| surveyId        | string | Survey id                            |
+| title           | string | Survey title                         |
+| desc            | string | Survey description                   |
+| status          | number | Survey status (0 or 1)               |
+| addedQuestions  | array  | List of new questions (optional)     |
+| updatedQuestions| array  | List of updated questions (optional) |
 
 
 **Request Payload Example:**
@@ -477,14 +477,6 @@ POST /api/surveys/{id}/submit
 }
 ```
 
-<!-- --- 
-
-### **Optional: GET Show Survey Answer (H5)**
-**Endpoint:**
-```
-GET /api/surveys/{id}/answers
-```
-**Response:** *(Same as GET All Responses)* -->
 
 ## **Interface Definitions**
 
@@ -495,7 +487,7 @@ interface Survey {
   title: string;
   desc: string;
   status: 0 | 1;
-  questions: Question[];
+  questions: Question[] | [];
 }
 ```
 
@@ -506,8 +498,20 @@ interface Question {
   surveyId: string;
   text: string;
   type: 'short_text' | 'long_text' | 'multiple_choice' | 'yes_no' | 'dropdown' | 'file_upload';
-  options?: QuestionOption[];
-  settings?:[]
+  options?: QuestionOption[] | [];
+  settings?:QuestionSettings[] | []
+}
+```
+
+### **QuestionSettings Interface**
+```typescript
+ interface QuestionSettings {
+  required: boolean;
+  max_character?: number;
+  multiple_selection?: boolean;
+  min_selection?: number;
+  max_selection?: number;
+  other_option?: boolean;
 }
 ```
 
@@ -523,7 +527,6 @@ interface QuestionOption {
 ```typescript
 interface SurveyResponse {
   id: string;
-  surveyId: string;
   user: string;
   answers: Answer[];
   created_at: string;
