@@ -175,13 +175,13 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
       "total": 85,
       "records":[
         {
-        "id": "survey-123",
+        "id": 1,
         "title": "Customer Satisfaction Survey",
         "desc": "Help us improve our service",
         "status": 1,
         "questions":  [
               {
-                  "id": "1",
+                  "id": 1,
                   "type": "short_text",
                   "label": "What is your name?",
                   "desc": "",
@@ -191,7 +191,7 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
                   }
               },
               {
-                  "id": "2",
+                  "id": 2,
                   "type": "long_text",
                   "label": "Describe your role and responsibilities",
                   "desc": "",
@@ -201,15 +201,15 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
                   }
               },
               {
-                  "id": "3",
+                  "id": 3,
                   "type": "multiple_choice",
                   "label": "Which programming languages do you use regularly",
                   "desc": "",
                   "options": [
-                      { "id": "1", "label": "JavaScript" },
-                      { "id": "2", "label": "Python" },
-                      { "id": "3", "label": "Java" },
-                      { "id": "4", "label": "PHP" }
+                      { "id": 1, "label": "JavaScript" },
+                      { "id": 2, "label": "Python" },
+                      { "id": 3, "label": "Java" },
+                      { "id": 4, "label": "PHP" }
                   ],
                   "settings": {
                       "required": true,
@@ -220,22 +220,22 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
                   }
               },
               {
-                  "id": "4",
+                  "id": 4,
                   "type": "dropdown",
                   "label": "What is your primary development focus?",
                   "desc": "",
                   "options": [
-                      { "id": "1", "label": "Frontend" },
-                      { "id": "2", "label": "Backend" },
-                      { "id": "3", "label": "Full Stack" },
-                      { "id": "4", "label": "DevOps" }
+                      { "id": 1, "label": "Frontend" },
+                      { "id": 2, "label": "Backend" },
+                      { "id": 3, "label": "Full Stack" },
+                      { "id": 4, "label": "DevOps" }
                   ],
                   "settings": {
                       "required": true
                   }
               },
               {
-                  "id": "5",
+                  "id": 5,
                   "type": "yes_no",
                   "label": "Are you interested in mentoring junior,developers?",
                   "desc": "",
@@ -244,7 +244,7 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
                   }
               },
               {
-                  "id": "6",
+                  "id": 6,
                   "type": "file_upload",
                   "label": "Upload a sample of your recent work",
                   "desc": "",
@@ -286,13 +286,13 @@ GET /api/surveys/{id}
   "msg": "success",
   "code": "200",
   "data": {
-    "id": "1",
+    "id": 1,
     "title": "Customer Satisfaction Survey",
     "desc": "Help us improve our service",
     "status": 1,
     "questions": [
       {
-        "id": "1",
+        "id": 1,
         "type": "short_text",
         "label": "What is your name?",
         "desc": "",
@@ -302,15 +302,15 @@ GET /api/surveys/{id}
         }
       },
       {
-        "id": "2",
+        "id": 2,
         "type": "multiple_choice",
         "label": "How satisfied are you with our service?",
         "desc": "",
         "options": [
-          { "id": "1", "label": "Very Satisfied" },
-          { "id": "2", "label": "Satisfied" },
-          { "id": "3", "label": "Neutral" },
-          { "id": "4", "label": "Dissatisfied" }
+          { "id": 1, "label": "Very Satisfied" },
+          { "id": 2, "label": "Satisfied" },
+          { "id": 3, "label": "Neutral" },
+          { "id": 4, "label": "Dissatisfied" }
         ],
         "settings": {
           "required": true,
@@ -352,7 +352,7 @@ POST /api/surveys
   "code":"0",
   "msg":"success",
   "data":{
-    "id": "1",
+    "id": 1,
     "title": "Customer Satisfaction Survey",
     "desc": "Help us improve our service",
     "status": 0,
@@ -383,7 +383,7 @@ PUT /api/surveys
 **Request Payload Example:**
 ```json
 {
-  "surveyId": "1",
+  "surveyId": 1,
   "title": "New Survey",
   "desc": "Survey Description",
   "status": 1,
@@ -393,10 +393,10 @@ PUT /api/surveys
         "label": "How satisfied are you with our service?",
         "desc": "",
         "options": [
-          { "id": "1", "label": "Very Satisfied" },
-          { "id": "2", "label": "Satisfied" },
-          { "id": "3", "label": "Neutral" },
-          { "id": "4", "label": "Dissatisfied" }
+          { "id": 1, "label": "Very Satisfied" },
+          { "id": 2, "label": "Satisfied" },
+          { "id": 3, "label": "Neutral" },
+          { "id": 4, "label": "Dissatisfied" }
         ],
         "settings": {
           "required": true,
@@ -417,7 +417,7 @@ PUT /api/surveys
   ],
   "updatedQuestions": [
     {
-      "id": "1",
+      "id": 1,
       "text": "What is your age?",
       "type": "short_text",
       "settings": {
@@ -453,10 +453,10 @@ PUT /api/surveys
           "label": "How satisfied are you with our service?",
           "desc": "",
           "options": [
-            { "id": "1", "label": "Very Satisfied" },
-            { "id": "2", "label": "Satisfied" },
-            { "id": "3", "label": "Neutral" },
-            { "id": "4", "label": "Dissatisfied" }
+            { "id": 1, "label": "Very Satisfied" },
+            { "id": 2, "label": "Satisfied" },
+            { "id": 3, "label": "Neutral" },
+            { "id": 4, "label": "Dissatisfied" }
           ],
           "settings": {
             "required": true,
