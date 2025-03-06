@@ -504,7 +504,7 @@ DELETE /api/surveys/{survey_id}/questions/{question_id}
 
 ---
 
-### **6. GET All Responses By Survey ID**
+## **6. GET All Responses By Survey ID**
 **Endpoint:**
 ```
 GET /api/surveys/{id}/responses
@@ -553,7 +553,7 @@ GET /api/surveys/{id}/responses
 
 ---
 
-## **6. POST Submit Survey**
+## **7. POST Submit Survey**
 **Endpoint:**
 ```
 POST /api/surveys/{id}/submit
