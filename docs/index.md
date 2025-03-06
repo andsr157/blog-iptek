@@ -540,3 +540,46 @@ interface Answer {
   response: string | string[];
 }
 ```
+
+## **Example Database Record Based on ERD**
+
+### **Tabel `survey`**
+| id | title                      | description                       | created_at          | updated_at          |
+|----|----------------------------|-----------------------------------|---------------------|--------------------|
+| 1  | Survei Kepuasan Pelanggan  | Survei tentang kepuasan pelanggan | 2024-03-06 10:00:00 | 2024-03-06 10:00:00 |
+
+---
+
+### **Tabel `question`**
+| id | survey_id | type           | label                                  | required | multiple_selection | min_selection | max_selection | other_option | created_at          | updated_at          |
+|----|----------|---------------|----------------------------------------|----------|--------------------|--------------|--------------|--------------|---------------------|---------------------|
+| 1  | 1        | short_text     | Apa pendapat Anda tentang layanan kami? | 1        | NULL               | NULL         | NULL         | NULL         | 2024-03-06 10:05:00 | 2024-03-06 10:05:00 |
+| 2  | 1        | multiple_choice | Seberapa puas Anda dengan layanan kami? | 1        | 0                  | 1            | 1            | 0            | 2024-03-06 10:06:00 | 2024-03-06 10:06:00 |
+
+---
+
+### **Tabel `options`**
+| id | question_id | options_text    | created_at          | updated_at          |
+|----|-------------|-----------------|---------------------|---------------------|
+| 1  | 2           | Sangat Puas     | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 2  | 2           | Puas            | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 3  | 2           | Biasa Saja      | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 4  | 2           | Tidak Puas      | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+
+---
+
+### **Tabel `response`**
+| id | survey_id | user_id  | created_at          |
+|----|-----------|----------|---------------------|
+| 1  | 1         | 101      | 2024-03-06 10:10:00 |
+
+---
+
+### **Tabel `answer`**
+| id | response_id | question_id | answer_text                       | option_id | other_answer | created_at          |
+|----|------------|------------|----------------------------------|----------|--------------|---------------------|
+| 1  | 1          | 1          | Layanan sangat baik              | NULL     | NULL         | 2024-03-06 10:11:00 |
+| 2  | 1          | 2          | NULL                             | 1        | NULL         | 2024-03-06 10:12:00 |
+
+---
+
