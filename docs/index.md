@@ -10,14 +10,15 @@
 |-------------|----------|----------|---------|--------------|
 | id          | INT      | NO       | AUTO_INCREMENT |
 | title       | VARCHAR(255) | NO    | NULL    |
+| status       | INT | NO    | 0    | value (0 or 1)
 | description | TEXT     | YES      | NULL    |
 | created_at  | DATETIME | NO       | CURRENT_TIMESTAMP |
 | updated_at  | DATETIME | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
 
 **Sample Data:**
-| id | title | description | created_at | updated_at |
-|----|-------|-------------|------------|------------|
-| 1 | Survei Pengalaman Pengguna | Survei untuk mengumpulkan feedback pengguna | 2024-03-06 10:00:00 | 2024-03-06 10:00:00 |
+| id | title  | status | description | created_at | updated_at |
+|----|--------|--------|-------------|------------|------------|
+| 1  | Survei | 1      | Pengalaman Pengguna | Survei untuk mengumpulkan feedback pengguna | 2024-03-06 10:00:00 | 2024-03-06 10:00:00 |
 
 ### **Tabel `question`**
 | Nama Field         | Tipe Data | Nullable | Default |description |
