@@ -511,7 +511,7 @@ GET /api/surveys/{id}/responses
 **Response:**
 
 | Field    | Type        | Description           |
-|----------|------- -----|-----------------------|
+|----------|-------------|-----------------------|
 | msg      | string      | Response message      |
 | code     | string      | Response code         |
 | data     | Responses[] | List of responses     |
