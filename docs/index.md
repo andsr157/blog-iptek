@@ -1,19 +1,18 @@
 # Survey API & Database Documentation
 
-
 [View ERD Diagram](https://drive.google.com/file/d/1eLUdc5WBJ5WGq-nJCDCSfphmNCSCDlVY/view?usp=sharing)
 
 ## **Database Table Stucture and Sample Data**
 
 ### **Tabel `survey`**
-| Nama Field   | Tipe Data | Nullable | Default |description |
-|-------------|----------|----------|---------|--------------|
-| id          | INT      | NO       | AUTO_INCREMENT |
-| title       | VARCHAR(255) | NO    | NULL    |
-| status       | INT | NO    | 0    | value (0 or 1)
-| description | TEXT     | YES      | NULL    |
-| created_at  | DATETIME | NO       | CURRENT_TIMESTAMP |
-| updated_at  | DATETIME | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
+| Nama Field   | Tipe Data    | Nullable | Default           | description    |
+|--------------|--------------|----------|-------------------|----------------|
+| id           | INT          | NO       | AUTO_INCREMENT    |                |
+| title        | VARCHAR(255) | NO       | NULL              |                |
+| status       | INT          | NO       | 0                 | value (0 or 1) |
+| description  | TEXT         | YES      | NULL              |                |
+| created_at   | DATETIME     | NO       | CURRENT_TIMESTAMP |                |
+| updated_at   | DATETIME     | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
 
 **Sample Data:**
 | id | title  | status | description | created_at | updated_at |
@@ -21,90 +20,90 @@
 | 1  | Survei | 1      | Pengalaman Pengguna | Survei untuk mengumpulkan feedback pengguna | 2024-03-06 10:00:00 | 2024-03-06 10:00:00 |
 
 ### **Tabel `question`**
-| Nama Field         | Tipe Data | Nullable | Default |description |
-|-------------------|------------|----------|---------|--------------|
-| id               | INT          | NO       | AUTO_INCREMENT |
-| survey_id        | INT          | NO       | NULL    |
-| type            | VARCHAR(50)   | NO       | NULL    |
-| label           | TEXT         | NO       | NULL    |
-| description     | TEXT    |  YES       | NULL    |
-| required        | BOOLEAN      | NO       | true       |
-| multiple_selection | BOOLEAN   | YES      | NULL    |
-| min_selection   | INT          | YES      | NULL    |
-| max_selection   | INT          | YES      | NULL    |
-| other_option    | BOOLEAN      | YES      | NULL    |
-| created_at      | DATETIME     | NO       | CURRENT_TIMESTAMP |
-| updated_at      | DATETIME     | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
+| Nama Field          | Tipe Data    | Nullable | Default           | Description   |
+|---------------------|--------------|----------|-------------------|---------------|
+| id                  | INT          | NO       | AUTO_INCREMENT    |               |
+| survey_id           | INT          | NO       | NULL              |               |  
+| type                | VARCHAR(50)  | NO       | NULL              |               |
+| label               | TEXT         | NO       | NULL              |               |
+| description         | TEXT         | YES      | NULL              |               |
+| required            | BOOLEAN      | NO       | true              |               |
+| multiple_selection  | BOOLEAN      | YES      | NULL              |               |
+| min_selection       | INT          | YES      | NULL              |               |
+| max_selection       | INT          | YES      | NULL              |               |
+| other_option        | BOOLEAN      | YES      | NULL              |               |
+| created_at          | DATETIME     | NO       | CURRENT_TIMESTAMP |               |
+| updated_at          | DATETIME     | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
 
 **Sample Data:**
 | id | survey_id | type | label | required | multiple_selection | min_selection | max_selection | other_option | created_at | updated_at |
-|----|-----------|------|-------|----------|-------------------|---------------|---------------|--------------|------------|------------|
-| 1 | 1 | short_text | Siapa nama Anda? | true | NULL | NULL | NULL | NULL | 2024-03-06 10:01:00 | 2024-03-06 10:01:00 |
-| 2 | 1 | long_text | Ceritakan pengalaman Anda menggunakan produk kami | true | NULL | NULL | NULL | NULL | 2024-03-06 10:02:00 | 2024-03-06 10:02:00 |
-| 3 | 1 | multiple_choice | Fitur apa yang paling sering Anda gunakan? | true | true | 1 | 4 | true | 2024-03-06 10:03:00 | 2024-03-06 10:03:00 |
-| 4 | 1 | dropdown | Berapa lama Anda telah menggunakan produk kami? | true | NULL | NULL | NULL | NULL | 2024-03-06 10:04:00 | 2024-03-06 10:04:00 |
-| 5 | 1 | yes_no | Apakah Anda akan merekomendasikan produk kami? | true | NULL | NULL | NULL | NULL | 2024-03-06 10:05:00 | 2024-03-06 10:05:00 |
-| 6 | 1 | file_upload | Unggah screenshot masalah yang Anda temui | true | NULL | NULL | NULL | NULL | 2024-03-06 10:06:00 | 2024-03-06 10:06:00 |
+|----|-----------|------|-------|----------|--------------------|---------------|---------------|--------------|------------|------------|
+| 1  | 1 | short_text      | Siapa nama Anda?                                   | true | NULL | NULL | NULL | NULL | 2024-03-06 10:01:00 | 2024-03-06 10:01:00 |
+| 2  | 1 | long_text       | Ceritakan pengalaman Anda menggunakan produk kami  | true | NULL | NULL | NULL | NULL | 2024-03-06 10:02:00 | 2024-03-06 10:02:00 |
+| 3  | 1 | multiple_choice | Fitur apa yang paling sering Anda gunakan?         | true | true | 1 | 4 | true | 2024-03-06 10:03:00 | 2024-03-06 10:03:00 |
+| 4  | 1 | dropdown        | Berapa lama Anda telah menggunakan produk kami?    | true | NULL | NULL | NULL | NULL | 2024-03-06 10:04:00 | 2024-03-06 10:04:00 |
+| 5  | 1 | yes_no          | Apakah Anda akan merekomendasikan produk kami?     | true | NULL | NULL | NULL | NULL | 2024-03-06 10:05:00 | 2024-03-06 10:05:00 |
+| 6  | 1 | file_upload     | Unggah screenshot masalah yang Anda temui          | true | NULL | NULL | NULL | NULL | 2024-03-06 10:06:00 | 2024-03-06 10:06:00 |
 
 ### **Tabel `options`**
-| Nama Field  | Tipe Data     | Nullable | Default |description |
-|------------|--------------|----------|---------|--------------|
-| id         | INT          | NO       | AUTO_INCREMENT |
-| question_id | INT         | NO       | NULL    |
-| options_text | VARCHAR(255) | NO       | NULL    |
-| created_at | DATETIME     | NO       | CURRENT_TIMESTAMP |
-| updated_at | DATETIME     | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
+| Nama Field    | Tipe Data    | Nullable | Default           | Description |
+|---------------|--------------|----------|-------------------|-------------|
+| id            | INT          | NO       | AUTO_INCREMENT    |             |
+| question_id   | INT          | NO       | NULL              |             |
+| options_text  | VARCHAR(255) | NO       | NULL              |             |
+| created_at    | DATETIME     | NO       | CURRENT_TIMESTAMP |             |
+| updated_at    | DATETIME     | NO       | CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
 
 **Sample Data:**
-| id | question_id | options_text | created_at | updated_at |
-|----|-------------|--------------|------------|------------|
-| 1 | 3 | Dashboard | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
-| 2 | 3 | Reporting | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
-| 3 | 3 | Analytics | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
-| 4 | 3 | Other | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
-| 5 | 4 | < 1 bulan | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
-| 6 | 4 | 1-6 bulan | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
-| 7 | 4 | 6-12 bulan | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
-| 8 | 4 | > 12 bulan | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
+| id | question_id | options_text | created_at          | updated_at          |
+|----|-------------|--------------|---------------------|---------------------|
+| 1  | 3           | Dashboard    | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 2  | 3           | Reporting    | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 3  | 3           | Analytics    | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 4  | 3           | Other        | 2024-03-06 10:07:00 | 2024-03-06 10:07:00 |
+| 5  | 4           | < 1 bulan    | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
+| 6  | 4           | 1-6 bulan    | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
+| 7  | 4           | 6-12 bulan   | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
+| 8  | 4           | > 12 bulan   | 2024-03-06 10:08:00 | 2024-03-06 10:08:00 |
 
 ### **Tabel `response`**
-| Nama Field  | Tipe Data  | Nullable | Default | description |
-|------------|-------------|----------|----------|-------------|
-| id         | INT         | NO       | AUTO_INCREMENT |             |
-| survey_id  | INT         | NO       | NULL     |             |
-| user_id    | INT         | YES      | NULL     |             |
-| created_at | DATETIME    | NO       | CURRENT_TIMESTAMP |      |
+| Nama Field  | Tipe Data  | Nullable | Default            | Description |
+|-------------|-------------|----------|-------------------|-------------|
+| id          | INT         | NO       | AUTO_INCREMENT    |             |
+| survey_id   | INT         | NO       | NULL              |             |
+| user_id     | INT         | YES      | NULL              |             |
+| created_at  | DATETIME    | NO       | CURRENT_TIMESTAMP |             |
 
 **Sample Data:**
-| id | survey_id | user_id | created_at |
-|----|-----------|---------|------------|
-| 1 | 1 | 101 | 2024-03-06 10:10:00 |
+| id | survey_id | user_id | created_at          |
+|----|-----------|---------|---------------------|
+| 1  | 1         | 101     | 2024-03-06 10:10:00 |
 
 ### **Tabel `answer`**
-| Nama Field   | Tipe Data  | Nullable | Default | description |
-|--------------|------------|----------|----------|-------------|
-| id           | INT        | NO       | AUTO_INCREMENT | |
-| response_id  | INT        | NO       | NULL    | |
-| question_id  | INT        | NO       | NULL    | |
-| answer_text  | TEXT       | YES      | NULL    | to store asnwer data except multiple_choice and dropdown |
-| option_id    | INT        | YES      | NULL    | |
-| other_answer | TEXT       | YES      | NULL    | to store data from multiple_choice other option |
-| created_at   | DATETIME   | NO       | CURRENT_TIMESTAMP | |
+| Nama Field   | Tipe Data  | Nullable | Default           | description  |
+|--------------|------------|----------|-------------------|--------------|
+| id           | INT        | NO       | AUTO_INCREMENT    |              |
+| response_id  | INT        | NO       | NULL              |              |
+| question_id  | INT        | NO       | NULL              |              |
+| answer_text  | TEXT       | YES      | NULL              | to store asnwer data except multiple_choice and dropdown |
+| option_id    | INT        | YES      | NULL              |              |
+| other_answer | TEXT       | YES      | NULL              | to store data from multiple_choice other option |
+| created_at   | DATETIME   | NO       | CURRENT_TIMESTAMP |              |
 
 **Sample Data:**
-| id | response_id | question_id | answer_text | option_id | other_answer | created_at |
-|----|-------------|-------------|-------------|-----------|--------------|------------|
-| 1 | 1 | 1 | John Doe | NULL | NULL | 2024-03-06 10:11:00 |
-| 2 | 1 | 2 | Produk sangat membantu pekerjaan saya... | NULL | NULL | 2024-03-06 10:11:00 |
-| 3 | 1 | 3 | NULL | 1 | NULL | 2024-03-06 10:11:00 |
-| 4 | 1 | 3 | NULL | 2 | NULL | 2024-03-06 10:11:00 |
-| 5 | 1 | 3 | NULL | NULL | Fitur Export | 2024-03-06 10:11:00 |
-| 6 | 1 | 4 | NULL | 7 | NULL | 2024-03-06 10:11:00 |
-| 7 | 1 | 5 | Yes | NULL | NULL | 2024-03-06 10:11:00 |
-| 8 | 1 | 6 | screenshot.png | NULL | NULL | 2024-03-06 10:11:00 |
-| 9 | 2 | 3 | NULL | 1 | NULL | 2024-03-06 11:00:00 |
-| 10 | 2 | 3 | NULL | 3 | NULL | 2024-03-06 11:00:00 |
-| 11 | 2 | 3 | NULL | NULL | Custom Analytics | 2024-03-06 11:00:00 |
+| id | response_id | question_id | answer_text    | option_id | other_answer     | created_at          |
+|----|-------------|-------------|----------------|-----------|------------------|---------------------|
+| 1  | 1           | 1           | John Doe       | NULL      | NULL             | 2024-03-06 10:11:00 |
+| 2  | 1           | 2           | Produk sangat membantu pekerjaan saya...| NULL | NULL | 2024-03-06 10:11:00 |
+| 3  | 1           | 3           | NULL           | 1         | NULL             | 2024-03-06 10:11:00 |
+| 4  | 1           | 3           | NULL           | 2         | NULL             | 2024-03-06 10:11:00 |
+| 5  | 1           | 3           | NULL           | NULL      | Fitur Export     | 2024-03-06 10:11:00 |
+| 6  | 1           | 4           | NULL           | 7         | NULL             | 2024-03-06 10:11:00 |
+| 7  | 1           | 5           | true           | NULL      | NULL             | 2024-03-06 10:11:00 |
+| 8  | 1           | 6           | screenshot.png | NULL      | NULL             | 2024-03-06 10:11:00 |
+| 9  | 2           | 3           | NULL           | 1         | NULL             | 2024-03-06 11:00:00 |
+| 10 | 2           | 3           | NULL           | 3         | NULL             | 2024-03-06 11:00:00 |
+| 11 | 2           | 3           | NULL           | NULL      | Custom Analytics | 2024-03-06 11:00:00 |
 
 ---
 
