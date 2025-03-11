@@ -123,7 +123,7 @@ GET /api/surveys
 | data.title      | string  | Survey title                |
 | data.desc       | string  | Survey description          |
 | data.status     | number  | Survey status (0 or 1)      |
-| data.questions  | array | List of survey questions |
+| data.questions  | array | List of survey questions      |
 
 **Question Object**
 | Field       | Type   | Description                            |
@@ -394,8 +394,8 @@ PUT /api/surveys
         "options": [
           { "id": 1, "label": "Very Satisfied" },
           { "id": 2, "label": "Satisfied" },
-          { "id": 3, "label": "Neutral" },
-          { "id": 4, "label": "Dissatisfied" }
+          { "id": "opt-1", "label": "Neutral" },
+          { "id": "opt-2", "label": "Dissatisfied" }
         ],
         "settings": {
           "required": true,
@@ -510,11 +510,11 @@ GET /api/surveys/{id}/responses
 ```
 **Response:**
 
-| Field    | Type        | Description           |
-|----------|-------------|-----------------------|
-| msg      | string      | Response message      |
-| code     | string      | Response code         |
-| data     | Responses[] | List of responses     |
+| Field    | Type        | Description            |
+|----------|-------------|------------------------|
+| msg      | string      | Response message       |
+| code     | string      | Response code          |
+| data     | Responses[] | List of responses      |
 
 
 **Data Responses Object**
