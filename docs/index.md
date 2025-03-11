@@ -536,12 +536,12 @@ GET /api/surveys/{id}/responses
   "code": "200",
   "data": [
     {
-      "id": "resp-123",
+      "id": 1,
       "user": "user-456",
       "created_at":"2023-12-01T12:00:00Z",
       "answers": [
         {
-          "questionId": "q-1",
+          "questionId": 1,
           "response": "Very Satisfied"
         }
       ],
