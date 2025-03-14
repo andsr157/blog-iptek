@@ -28,6 +28,7 @@
 | label               | TEXT         | NO       | NULL              |               |
 | description         | TEXT         | YES      | NULL              |               |
 | required            | BOOLEAN      | NO       | true              |               |
+| max_character       | TEXT         | NO       | 100 / 500         | 100 for 'short_text', 500 for 'long_text'              |
 | multiple_selection  | BOOLEAN      | YES      | NULL              |               |
 | min_selection       | INT          | YES      | NULL              |               |
 | max_selection       | INT          | YES      | NULL              |               |
