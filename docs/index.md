@@ -261,11 +261,24 @@ Berikut adalah kemungkinan `settings` berdasarkan `type`:
 
 ---
 
-## **2. GET Single Survey by ID**
+## **2. GET Single Survey**
 **Endpoint:**
 ```
-GET /api/surveys/{id}
+POST /api/surveys/detail
 ```
+
+**Request Payload:**
+| Field    | Type   | Description |
+|----------|--------|-------------|
+| surveyId | string | Survey ID   |
+
+**Request Payload Example:**
+```json
+{
+  "surveyId": "1"
+}
+```
+
 **Response:**
 
 | Field           | Type    | Description                    |
@@ -393,8 +406,6 @@ PUT /api/surveys
         "label": "How satisfied are you with our service?",
         "desc": "",
         "options": [
-          { "id": 1, "label": "Very Satisfied" },
-          { "id": 2, "label": "Satisfied" },
           { "id": "opt-1", "label": "Neutral" },
           { "id": "opt-2", "label": "Dissatisfied" }
         ],
@@ -424,7 +435,19 @@ PUT /api/surveys
         "required": true,
         "max_character": '1000'
       }
-    }
+    },
+    {
+      "id":2,
+      "type": "multiple_choice",
+      "label": "How satisfied are you with our service?",
+      "desc": "",  
+      "settings": {
+        "required": true,
+        "multiple_selection": false,
+        "min_selection": 1,
+        "max_selection": 1
+      }
+    },
   ]
 }
 ```
@@ -466,7 +489,23 @@ PUT /api/surveys
           }
       },
       {
-          "id": 2,
+          "id": 3,
+          "type": "multiple_choice",
+          "label": "How satisfied are you with our service?",
+          "desc": "",
+          "options": [
+            { "id": 5, "label": "Neutral" },
+            { "id": 6, "label": "Dissatisfied" }
+          ],
+          "settings": {
+            "required": true,
+            "multiple_selection": false,
+            "min_selection": 1,
+            "max_selection": 1
+          }
+      },
+      {
+          "id": 4,
           "type": "yes_no",
           "label": "Are you satisfied with our service?",
           "desc": "",
@@ -482,33 +521,144 @@ PUT /api/surveys
 
 ---
 
-## **5. DELETE Question**
+## **5. ADD Option**
 **Endpoint:**
 ```
-DELETE /api/surveys/{survey_id}/questions/{question_id}
+POST /api/surveys/options
 ```
-**Response:**
+**Request Payload:**
 
-| Field   | Type   | Description        |
-|---------|--------|--------------------|
-| msg     | string | Response message   |
-| code    | string | Response code      |
+| Field       | Type   | Description            |
+|------------|---------|------------------------|
+| questionId | string  | Question ID            |
+| label      | string  | Option label/text      |
+
+**Request Payload Example:**
+```json
+{
+  "questionId": "1",
+  "label": "New Option"
+}
+```
 
 **Response Example:**
 ```json
 {
   "code": "0",
-  "msg": "Question deleted successfully",
+  "msg": "Option added successfully",
+  "data": {
+    "id": "5",
+    "label": "New Option"
+  }
+}
+```
+
+## **6. UPDATE Option**
+**Endpoint:**
+```
+PUT /api/surveys/options/update
+```
+**Request Payload:**
+
+| Field     | Type   | Description       |
+|-----------|--------|-------------------|
+| optionId  | string | Option ID         |
+| label     | string | New option label  |
+
+**Request Payload Example:**
+```json
+{
+  "optionId": "5",
+  "label": "Updated Option Text"
+}
+```
+
+**Response Example:**
+```json
+{
+  "code": "0",
+  "msg": "Option updated successfully",
+  "data": {
+    "id": "5",
+    "label": "Updated Option Text"
+  }
+}
+```
+
+## **7. DELETE Option**
+**Endpoint:**
+```
+DELETE /api/surveys/options/delete
+```
+
+**Request Payload:**
+| Field     | Type   | Description    |
+|-----------|--------|----------------|
+| optionId  | string | Option ID      |
+
+**Request Payload Example:**
+```json
+{
+  "optionId": "5"
+}
+```
+
+**Response Example:**
+```json
+{
+  "code": "0",
+  "msg": "Option deleted successfully"
 }
 ```
 
 ---
 
-## **6. GET All Responses By Survey ID**
+## **8. DELETE Question**
 **Endpoint:**
 ```
-GET /api/surveys/{id}/responses
+DELETE /api/surveys/question/delete
 ```
+
+**Request Payload:**
+| Field      | Type   | Description    |
+|------------|--------|----------------|
+| questionId | string | Question ID    |
+
+**Request Payload Example:**
+```json
+{
+  "questionId": "1"
+}
+```
+
+**Response Example:**
+```json
+{
+  "code": "0",
+  "msg": "Question deleted successfully"
+}
+```
+
+---
+
+## **9. GET All Responses**
+**Endpoint:**
+```
+POST /api/surveys/responses
+```
+
+**Request Payload:**
+| Field    | Type   | Description |
+|----------|--------|-------------|
+| surveyId | string | Survey ID   |
+
+**Request Payload Example:**
+```json
+{
+  "surveyId": "1"
+}
+```
+
 **Response:**
 
 | Field    | Type        | Description            |
@@ -553,17 +703,29 @@ GET /api/surveys/{id}/responses
 
 ---
 
-## **7. POST Submit Survey**
+## **10. Submit Survey**
 **Endpoint:**
 ```
-POST /api/surveys/{id}/submit
+POST /api/surveys/submit
 ```
+
 **Request Payload:**
+| Field    | Type   | Description        |
+|----------|--------|--------------------|
+| surveyId | string | Survey ID          |
+| answers  | array  | Survey answers     |
 
-
-**Request Example:**
+**Request Payload Example:**
 ```json
-{}
+{
+  "surveyId": "1",
+  "answers": [
+    {
+      "questionId": "1",
+      "response": "Very Satisfied"
+    }
+  ]
+}
 ```
 
 **Response:**
