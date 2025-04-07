@@ -641,7 +641,7 @@ DELETE /api/surveys/question/delete
 
 ---
 
-## **9. GET All Responses**
+## **9. GET Survey Responses**
 **Endpoint:**
 ```
 POST /api/surveys/responses
@@ -687,15 +687,233 @@ POST /api/surveys/responses
   "code": "200",
   "data": [
     {
-      "id": 1,
-      "user": "user-456",
-      "created_at":"2023-12-01T12:00:00Z",
-      "answers": [
-        {
-          "questionId": 1,
-          "response": "Very Satisfied"
-        }
-      ],
+        id: 1,
+        surveyTitle: "Development Team Survey",
+        surveyDescription: "Survey for development team skills and experience",
+        user: 'Alice Johnson',
+        created_at: '2023-11-01',
+        answers: [
+            {
+                questionId: 1,
+                questionLabel: 'What is your name?',
+                questionType: 'short_text',
+                response: 'Alice Johnson'
+            },
+            {
+                questionId: 2,
+                questionLabel: 'Describe your role and responsibilities',
+                questionType: 'long_text',
+                response: 'Senior Frontend Developer specializing in Vue.js and React'
+            },
+            {
+                questionId: 3,
+                questionLabel: 'Which programming languages do you use regularly?',
+                questionType: 'multiple_choice',
+                options: [
+                    { id: '1', label: 'JavaScript' },
+                    { id: '2', label: 'Python' },
+                    { id: '3', label: 'Java' },
+                    { id: '4', label: 'PHP' }
+                ],
+                response: ['JavaScript', 'Python', 'Java']
+            },
+            {
+                questionId: 4,
+                questionLabel: 'What is your primary development focus?',
+                questionType: 'dropdown',
+                options: [
+                    { id: '1', label: 'Frontend' },
+                    { id: '2', label: 'Backend' },
+                    { id: '3', label: 'Full Stack' },
+                    { id: '4', label: 'DevOps' }
+                ],
+                response: 'Frontend'
+            },
+            {
+                questionId: 5,
+                questionLabel: 'Are you interested in mentoring junior developers?',
+                questionType: 'yes_no',
+                response: 'Ya'
+            },
+            {
+                questionId: 6,
+                questionLabel: 'Upload a sample of your recent work',
+                questionType: 'file_upload',
+                response: 'https://example.com/alice-project.pdf'
+            }
+        ]
+    },
+    {
+        id: 2,
+        surveyTitle: "Development Team Survey",
+        surveyDescription: "Survey for development team skills and experience",
+        user: null,
+        created_at: '2023-11-02',
+        answers: [
+            {
+                questionId: 1,
+                questionLabel: 'What is your name?',
+                questionType: 'short_text',
+                response: 'Anonymous'
+            },
+            {
+                questionId: 2,
+                questionLabel: 'Describe your role and responsibilities',
+                questionType: 'long_text',
+                response: 'Backend developer with 3 years experience'
+            },
+            {
+                questionId: 3,
+                questionLabel: 'Which programming languages do you use regularly?',
+                questionType: 'multiple_choice',
+                options: [
+                    { id: '1', label: 'JavaScript' },
+                    { id: '2', label: 'Python' },
+                    { id: '3', label: 'Java' },
+                    { id: '4', label: 'PHP' }
+                ],
+                response: ['Python', 'Java']
+            },
+            {
+                questionId: 4,
+                questionLabel: 'What is your primary development focus?',
+                questionType: 'dropdown',
+                options: [
+                    { id: '1', label: 'Frontend' },
+                    { id: '2', label: 'Backend' },
+                    { id: '3', label: 'Full Stack' },
+                    { id: '4', label: 'DevOps' }
+                ],
+                response: 'Backend'
+            },
+            {
+                questionId: 5,
+                questionLabel: 'Are you interested in mentoring junior developers?',
+                questionType: 'yes_no',
+                response: 'Tidak'
+            },
+            {
+                questionId: 6,
+                questionLabel: 'Upload a sample of your recent work',
+                questionType: 'file_upload',
+                response: 'https://example.com/anonymous-work.pdf'
+            }
+        ]
+    },
+    {
+        id: 3,
+        surveyTitle: "Development Team Survey",
+        surveyDescription: "Survey for development team skills and experience",
+        user: 'Alice Johnson',
+        created_at: '2023-11-03',
+        answers: [
+            {
+                questionId: 1,
+                questionLabel: 'What is your name?',
+                questionType: 'short_text',
+                response: 'Bob Smith'
+            },
+            {
+                questionId: 2,
+                questionLabel: 'Describe your role and responsibilities',
+                questionType: 'long_text',
+                response: 'Full stack developer working on e-commerce platforms'
+            },
+            {
+                questionId: 3,
+                questionLabel: 'Which programming languages do you use regularly?',
+                questionType: 'multiple_choice',
+                options: [
+                    { id: '1', label: 'JavaScript' },
+                    { id: '2', label: 'Python' },
+                    { id: '3', label: 'Java' },
+                    { id: '4', label: 'PHP' }
+                ],
+                response: ['JavaScript', 'PHP', 'Python', 'Java']
+            },
+            {
+                questionId: 4,
+                questionLabel: 'What is your primary development focus?',
+                questionType: 'dropdown',
+                options: [
+                    { id: '1', label: 'Frontend' },
+                    { id: '2', label: 'Backend' },
+                    { id: '3', label: 'Full Stack' },
+                    { id: '4', label: 'DevOps' }
+                ],
+                response: 'Full Stack'
+            },
+            {
+                questionId: 5,
+                questionLabel: 'Are you interested in mentoring junior developers?',
+                questionType: 'yes_no',
+                response: 'Ya'
+            },
+            {
+                questionId: 6,
+                questionLabel: 'Upload a sample of your recent work',
+                questionType: 'file_upload',
+                response: 'https://example.com/bob-portfolio.pdf'
+            }
+        ]
+    },
+    {
+        id: 4,
+        surveyId: 1,
+        surveyTitle: "Development Team Survey",
+        surveyDescription: "Survey for development team skills and experience",
+        user: null,
+        created_at: '2023-11-04',
+        answers: [
+            {
+                questionId: 1,
+                questionLabel: 'What is your name?',
+                questionType: 'short_text',
+                response: 'Bob Smith'
+            },
+            {
+                questionId: 2,
+                questionLabel: 'Describe your role and responsibilities',
+                questionType: 'long_text',
+                response: 'DevOps engineer focusing on CI/CD pipelines'
+            },
+            {
+                questionId: 3,
+                questionLabel: 'Which programming languages do you use regularly?',
+                questionType: 'multiple_choice',
+                options: [
+                    { id: '1', label: 'JavaScript' },
+                    { id: '2', label: 'Python' },
+                    { id: '3', label: 'Java' },
+                    { id: '4', label: 'PHP' }
+                ],
+                response: ['Python', 'Java']
+            },
+            {
+                questionId: 4,
+                questionLabel: 'What is your primary development focus?',
+                questionType: 'dropdown',
+                options: [
+                    { id: '1', label: 'Frontend' },
+                    { id: '2', label: 'Backend' },
+                    { id: '3', label: 'Full Stack' },
+                    { id: '4', label: 'DevOps' }
+                ],
+                response: 'DevOps'
+            },
+            {
+                questionId: 5,
+                questionLabel: 'Are you interested in mentoring junior developers?',
+                questionType: 'yes_no',
+                response: 'Ya'
+            },
+            {
+                questionId: 6,
+                questionLabel: 'Upload a sample of your recent work',
+                questionType: 'file_upload',
+                response: 'https://example.com/devops-sample.pdf'
+            }
+        ]
     }
   ]
 }
